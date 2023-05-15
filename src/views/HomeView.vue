@@ -1,24 +1,29 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-    <van-button type="primary">主要按钮</van-button>
-<van-button type="success">成功按钮</van-button>
-<van-button type="default">默认按钮</van-button>
-<van-button type="warning">警告按钮</van-button>
-<van-button type="danger">危险按钮</van-button>
-
+  <div>
+    <!-- 底部选项卡 -->
+    <van-tabbar v-model="active" active-color="#f03d37">
+    <van-tabbar-item >
+      首页
+      <template #icon="props">
+        <img :src="props.active?icon.active:icon.inactive">
+      </template> 
+    </van-tabbar-item>
+    <van-tabbar-item icon="search">视频</van-tabbar-item>
+    <van-tabbar-item icon="friends-o">演出</van-tabbar-item>
+    <van-tabbar-item icon="setting-o">我的</van-tabbar-item>
+</van-tabbar>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
-export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
-});
+<script setup lang="ts">
+import { ref } from 'vue';
+const active = ref(0);
+const icon={
+  active:'src/assets/tabs/index_1.png',
+  inactive:'src/assets/tabs/index_0.png'
+}
 </script>
+
+<style scoped>
+
+</style>
