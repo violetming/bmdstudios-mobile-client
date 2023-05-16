@@ -1,6 +1,7 @@
 <template>
   <nav>
   </nav>
+  
   <router-view/>
 </template>
 
@@ -8,6 +9,11 @@
 *{
   margin: 0;
   padding: 0;
+}
+:root:root{
+  --van-nav-bar-background:#f03d37;
+  --van-nav-bar-icon-color:#fff;
+  --van-nav-bar-title-text-color:#fff;
 }
 
 </style>
