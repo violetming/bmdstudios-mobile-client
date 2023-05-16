@@ -1,6 +1,7 @@
 <template>
 
   <div>
+    <!-- 二级路由占位符 -->
     <router-view/>
     <div style="height:60px"></div>
     <!-- 底部选项卡 -->

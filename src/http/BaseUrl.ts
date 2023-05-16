@@ -12,4 +12,4 @@ const URLENV = {
     }
 }
 
-export default URLENV.PRO;
+export default URLENV.DEV;

@@ -31,7 +31,7 @@ const directorApi = {
 
   /** 查询所有导演 */
   queryAll() {
-    let params = { page: 1, pagesize: 100 };
+    const params = { page: 1, pagesize: 100 };
     return myaxios.get(BMDURL+'/movie-directors', params);
   },
 

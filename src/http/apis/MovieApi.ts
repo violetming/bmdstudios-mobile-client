@@ -58,6 +58,14 @@ const movieApi = {
    */
   queryAll(params:object){
     return myaxios.get(BMDURL+'/movie-infos', params)
+  },
+  /**
+   * 通过类别id查询电影列表
+   * @param params 
+   */
+  queryByCategory(params:{page:number,pagesize:number}){
+    const url=BMDURL+'/movie-infos/category'
+    return myaxios.get(url,params)
   }
 
 }

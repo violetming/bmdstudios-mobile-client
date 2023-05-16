@@ -31,7 +31,7 @@ const actorApi = {
 
   /** 查询所有演员 */
   queryAll() {
-    let params = { page: 1, pagesize: 100 };
+    const params = { page: 1, pagesize: 100 };
     return myaxios.get(BMDURL+'/movie-actors', params);
   },
 

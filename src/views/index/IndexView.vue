@@ -27,7 +27,9 @@
     </div>
     </van-sticky>
     <!-- 内容区域 -->
-    <movie-item v-for="i in 10" :key="i">
+    <movie-item 
+    :movie="item"
+    v-for="item in MovieList" :key="item.id">
 
     </movie-item>
 
@@ -36,7 +38,25 @@
 
 <script setup lang="ts">
 /* 标题栏 */
+import { onMounted } from "vue";
 import { ref } from "vue";
+import httpApi from '@/http'
+import Movie from '@/types/Movie'
+import { watch } from "vue";
+
+/**页面初始化时，加载热映类别(cid=1)的首页电影列表数据 */
+const MovieList=ref<Movie[]>()
+onMounted(()=>{
+  console.log('@@@@@@@');
+  const params={cid:1,page:1,pagesize:20}
+  httpApi.movieApi.queryByCategory(params).then(res=>{
+    console.log(res);
+    MovieList.value=res.data.data.result
+  })
+
+})
+
+/**控制右上角popover弹窗 */
 const showPopover = ref(false);
 const actions = [
   { text: "首页" },
@@ -52,8 +72,15 @@ const option1 = [
       { text: '新款商品', value: 1 },
       { text: '活动商品', value: 2 },
     ];
-    // 标签栏
+    
+/**控制顶部导航 监听顶部导航的变化 从而发送请求，加载数据 */
+
 const active = ref(0);
+watch(active,(newVal,oldVal)=>{
+  console.log(`导航从${oldVal}切换到了${newVal}`);
+})
+
+
 
 </script>
 
