@@ -2,7 +2,11 @@
 
   <div>
     <!-- 二级路由占位符 -->
-    <router-view/>
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
     <div style="height:60px"></div>
     <!-- 底部选项卡 -->
     <van-tabbar 

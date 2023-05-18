@@ -52,6 +52,12 @@ const cinemaApi = {
   update(params:object){
     return myaxios.post(BMDURL + "/cinema/update", params);
   },
+  /**
+   * 通过电影ID与日期字符串，查询有排期的电影院列表
+   */
+  queryByMovieAndDate(params:{movie_id:number,showingon_date:string}){
+    return myaxios.get(BMDURL+'/cinemas/date',params)
+  }
 
 };
 
